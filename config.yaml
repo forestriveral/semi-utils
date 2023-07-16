@@ -1,10 +1,10 @@
 base:
   alternative_bold_font: ./fonts/Roboto-Medium.ttf
   alternative_font: ./fonts/Roboto-Regular.ttf
-  bold_font: ./fonts/AlibabaPuHuiTi-2-85-Bold.otf
-  bold_font_size: 1
-  font: ./fonts/AlibabaPuHuiTi-2-45-Light.otf
-  font_size: 1
+  bold_font: ./fonts/Roboto-Bold.otf
+  bold_font_size: 1.4
+  font: ./fonts/Kathy Fillia.otf
+  font_size: 1.4
   input_dir: ./input
   output_dir: ./output
   quality: 100
@@ -16,10 +16,14 @@ global:
   shadow:
     enable: false
   white_margin:
-    enable: true
+    enable: false
     width: 3
 layout:
   background_color: '#ffffff'
+  custom_setting:
+    watermark_padding_scale: 0.95
+    watermark_personal_sign: ComVivas
+    watermark_size_scale: 0.95
   elements:
     left_bottom:
       color: '#757575'
@@ -38,9 +42,10 @@ layout:
       color: '#212121'
       is_bold: true
       name: Param
-  logo_enable: false
+  lens_check: true
+  logo_enable: true
   logo_position: left
-  type: watermark_right_logo
+  type: custom_watermark
 logo:
   makes:
     apple:

@@ -110,6 +110,8 @@ class Config(object):
             return 250
         elif font_size == 3:
             return 300
+        elif isinstance(font_size, float):
+            return int(240 * font_size)
         else:
             return 240
 
@@ -121,6 +123,8 @@ class Config(object):
             return 290
         elif font_size == 3:
             return 320
+        elif isinstance(font_size, float):
+            return int(260 * font_size)
         else:
             return 260
 
@@ -226,7 +230,7 @@ class Config(object):
 
     def set_custom(self, location):
         self._data['layout']['elements'][location]['name'] = 'Custom'
-        user_input = input('输入自定义字段的值（上次使用的值为：{}）\n'.format(self.get_custom_value(location)))
+        user_input = input('输入自定义字段的值(上次使用的值为：{})\n'.format(self.get_custom_value(location)))
         self._data['layout']['elements'][location]['value'] = user_input
 
     def set_element_name(self, location, name):
@@ -234,3 +238,15 @@ class Config(object):
             self.set_custom(location)
         else:
             self._data['layout']['elements'][location]['name'] = name
+
+    def has_lens_check(self):
+        return self._data['layout']['lens_check']
+
+    def has_custom_watermark_enabled(self):
+        if self._data['layout']['type'] == 'custom_watermark':
+            return True
+        else:
+            return False
+
+    def get_custom_watermark_setting(self):
+        return self._data['layout']['custom_setting']

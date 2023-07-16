@@ -21,7 +21,7 @@ from utils import get_file_list
 
 def processing():
     """
-    状态100：处理图片
+    状态100:处理图片
     :return:
     """
     global state
@@ -31,7 +31,7 @@ def processing():
 
     processor_chain = ProcessorChain()
 
-    # 如果需要添加阴影，则添加阴影处理器，阴影处理器优先级最高，但是正方形布局不需要阴影
+    # 如果需要添加阴影,则添加阴影处理器,阴影处理器优先级最高,但是正方形布局不需要阴影
     if config.has_shadow_enabled() and 'square' != config.get_layout_type():
         processor_chain.add(SHADOW_PROCESSOR)
 
@@ -41,11 +41,11 @@ def processing():
     else:
         processor_chain.add(SIMPLE_PROCESSOR)
 
-    # 如果需要添加白边，且是水印布局，则添加白边处理器，白边处理器优先级最低
+    # 如果需要添加白边,且是水印布局,则添加白边处理器,白边处理器优先级最低
     if config.has_white_margin_enabled() and 'watermark' in config.get_layout_type():
         processor_chain.add(MARGIN_PROCESSOR)
 
-    # 如果需要按原有比例填充，且不是正方形布局，则添加填充处理器
+    # 如果需要按原有比例填充,且不是正方形布局,则添加填充处理器
     if config.has_padding_with_original_ratio_enabled() and 'square' != config.get_layout_type():
         processor_chain.add(PADDING_TO_ORIGINAL_RATIO_PROCESSOR)
 
@@ -69,7 +69,7 @@ def processing():
 
         container.save(target_path, quality=config.get_quality())
         container.close()
-    print('处理完成，文件已输出至 output 文件夹中，请点击任意键退出或直接关闭')
+    print('处理完成,文件已输出至 output 文件夹中,请点击任意键退出或直接关闭')
     if DEBUG:
         sys.exit(0)
     else:
@@ -84,17 +84,17 @@ root_menu.set_parent(root_menu)
 if __name__ == '__main__':
     print(SEPARATE_LINE)
     print('''
-本工具为开源工具，遵循 Apache 2.0 License 发布。如果您在使用过程中遇到问题，请联系作者：
+本工具为开源工具,遵循 Apache 2.0 License 发布。如果您在使用过程中遇到问题,请联系作者:
 GitHub: @leslievan
 Bilibili: @吨吨吨的半夏
-项目介绍：https://www.bilibili.com/video/BV11A411U7Kn
-项目地址：https://github.com/leslievan/semi-utils
-项目介绍（博客）：https://lsvm.xyz/2023/02/semi-utils-intro/
-项目发布页：https://docs.qq.com/sheet/DTXF5c2lHeUZYREtw
+项目介绍:https://www.bilibili.com/video/BV11A411U7Kn
+项目地址:https://github.com/leslievan/semi-utils
+项目介绍（博客）:https://lsvm.xyz/2023/02/semi-utils-intro/
+项目发布页:https://docs.qq.com/sheet/DTXF5c2lHeUZYREtw
 ''')
     while True:
         try:
-            # 0：主菜单，100：处理图片，-1：退出程序，其他：子菜单
+            # 0:主菜单,100:处理图片,-1:退出程序,其他:子菜单
             if state == 0:
                 # 显示主菜单
                 print(SEPARATE_LINE)
@@ -103,9 +103,9 @@ Bilibili: @吨吨吨的半夏
 
                 # 处理用户输入
                 user_input = input(
-                    '输入【y 或回车】按照当前设置开始处理图片，输入【数字】修改设置，输入【r】返回上一层菜单，输入【x】退出程序\n')
+                    '输入【y 或回车】按照当前设置开始处理图片,输入【数字】修改设置,输入【r】返回上一层菜单,输入【x】退出程序\n')
 
-                # y 或回车，跳转状态 100，开始处理图片
+                # y 或回车,跳转状态 100,开始处理图片
                 if user_input == 'y' or user_input == '':
                     state = 100
                 # x 退出程序
@@ -121,7 +121,7 @@ Bilibili: @吨吨吨的半夏
                         current_menu.run()
                         current_menu = root_menu
                 else:
-                    print('输入错误，请重新输入')
+                    print('输入错误,请重新输入')
             elif state == 100:
                 # 处理数据的代码
                 print(SEPARATE_LINE)

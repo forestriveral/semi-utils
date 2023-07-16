@@ -42,7 +42,7 @@ class ProcessorComponent:
 
     def process(self, container: ImageContainer) -> None:
         """
-        处理图片容器中的 watermark_img，将处理后的图片放回容器中
+        处理图片容器中的 watermark_img,将处理后的图片放回容器中
         """
         raise NotImplementedError
 
@@ -137,10 +137,18 @@ class WatermarkProcessor(ProcessorComponent):
         # 水印中上下边缘空白部分的占比
         padding_ratio = (.52 if container.get_ratio() >= 1 else .7) - 0.04 * config.get_font_padding_level()
 
+        if config.has_custom_watermark_enabled():
+            custom_setting = config.get_custom_watermark_setting()
+            ratio = ratio * custom_setting['watermark_size_scale']
+            padding_ratio = padding_ratio * custom_setting['watermark_padding_scale']
+            if custom_setting['watermark_personal_sign']:
+                container.add_watermark_personal_sign(custom_setting['watermark_personal_sign'])
+
         # 创建一个空白的水印图片
         watermark = Image.new('RGBA', (int(NORMAL_HEIGHT / ratio), NORMAL_HEIGHT), color=self.bg_color)
 
         with Image.new('RGBA', (10, 100), color=self.bg_color) as empty_padding:
+            if config.has_lens_check(): container.lens_check()
             # 填充左边的文字内容
             left_top = text_to_image(container.get_attribute_str(config.get_left_top()),
                                      config.get_font(),
@@ -175,13 +183,14 @@ class WatermarkProcessor(ProcessorComponent):
         logo = config.load_logo(container.make)
         if self.logo_enable:
             if self.is_logo_left():
+                # logo = padding_image(logo, int(padding_ratio * logo.height))
                 # 如果 logo 在左边
                 append_image_by_side(watermark, [logo, left], is_start=logo is None)
                 append_image_by_side(watermark, [right], side='right')
             else:
                 # 如果 logo 在右边
                 if logo is not None:
-                    # 如果 logo 不为空，等比例缩小 logo
+                    # 如果 logo 不为空,等比例缩小 logo
                     logo = padding_image(logo, int(padding_ratio * logo.height))
                     # 插入一根线条用于分割 logo 和文字
                     line = padding_image(LINE_GRAY, int(padding_ratio * LINE_GRAY.height * .8))
@@ -230,7 +239,7 @@ class WatermarkLeftLogoProcessor(WatermarkProcessor):
 
 class DarkWatermarkRightLogoProcessor(WatermarkRightLogoProcessor):
     LAYOUT_ID = 'dark_watermark_right_logo'
-    LAYOUT_NAME = 'normal(黑红配色，Logo 居右)'
+    LAYOUT_NAME = 'normal(黑红配色,Logo 居右)'
 
     def __init__(self, config: Config):
         super().__init__(config)
@@ -345,11 +354,11 @@ class PaddingToOriginalRatioProcessor(ProcessorComponent):
         original_ratio = container.get_original_ratio()
         ratio = container.get_ratio()
         if original_ratio > ratio:
-            # 如果原始比例大于当前比例，说明宽度大于高度，需要填充高度
+            # 如果原始比例大于当前比例,说明宽度大于高度,需要填充高度
             padding_size = int(container.get_width() / original_ratio - container.get_height())
             padding_img = ImageOps.expand(container.get_watermark_img(), (0, padding_size), fill='white')
         else:
-            # 如果原始比例小于当前比例，说明高度大于宽度，需要填充宽度
+            # 如果原始比例小于当前比例,说明高度大于宽度,需要填充宽度
             padding_size = int(container.get_height() * original_ratio - container.get_width())
             padding_img = ImageOps.expand(container.get_watermark_img(), (padding_size, 0), fill='white')
         container.update_watermark_img(padding_img)

@@ -121,7 +121,7 @@ def concatenate_image(images, align='left'):
     """
     将多张图片拼接成一列
     :param images: 图片对象列表
-    :param align: 对齐方向，left/center/right
+    :param align: 对齐方向,left/center/right
     :return: 拼接后的图片对象
     """
     widths, heights = zip(*(i.size for i in images))
@@ -155,7 +155,7 @@ def padding_image(image, padding_size, padding_location='tb', color=TRANSPARENT)
     在图片四周填充白色像素
     :param image: 图片对象
     :param padding_size: 填充像素大小
-    :param padding_location: 填充位置，top/bottom/left/right
+    :param padding_location: 填充位置,top/bottom/left/right
     :return: 填充白色像素后的图片对象
     """
     if image is None:
@@ -259,7 +259,7 @@ def append_image_by_side(background, images, side='left', padding=200, is_start=
     将图片横向拼接到背景图片中
     :param background: 背景图片对象
     :param images: 图片对象列表
-    :param side: 拼接方向，left/right
+    :param side: 拼接方向,left/right
     :param padding: 图片之间的间距
     :param is_start: 是否在最左侧添加 padding
     :return: 拼接后的图片对象
@@ -310,8 +310,8 @@ def merge_images(images, axis=0, align=0):
     """
     拼接多张图片
     :param images: 图片对象列表
-    :param axis: 0 水平拼接，1 垂直拼接
-    :param align: 0 居中对齐，1 底部/右对齐，2 顶部/左对齐
+    :param axis: 0 水平拼接,1 垂直拼接
+    :param align: 0 居中对齐,1 底部/右对齐,2 顶部/左对齐
     :return: 拼接后的图片对象
     """
     # 获取每张图像的 size
@@ -368,7 +368,7 @@ def extract_attribute(data_dict: dict, *keys, default_value: str = '', prefix=''
 
     :param data_dict: 包含属性值的字典
     :param keys: 一个或多个键
-    :param default_value: 默认值，默认为空字符串
+    :param default_value: 默认值,默认为空字符串
     :return: 对应的属性值或空字符串
     """
     for key in keys:

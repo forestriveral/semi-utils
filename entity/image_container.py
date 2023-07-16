@@ -252,3 +252,11 @@ class ImageContainer(object):
         if self.watermark_img.mode != 'RGB':
             self.watermark_img = self.watermark_img.convert('RGB')
         self.watermark_img.save(target_path, quality=quality, encoding='utf-8', exif=self.img.info['exif'])
+
+    def lens_check(self):
+        if self.lens_make != self.make:
+            if self.lens_make not in self.lens_model:
+                self.lens_model = self.lens_make + ' ' + self.lens_model
+
+    def add_watermark_personal_sign(self, personal_sign: str) -> None:
+        self.model = self.model + ' by ' + personal_sign
