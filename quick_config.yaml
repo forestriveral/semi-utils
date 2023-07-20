@@ -1,12 +1,12 @@
 base:
-  alternative_bold_font: ./fonts/Roboto-Medium.ttf
-  alternative_font: ./fonts/Roboto-Regular.ttf
-  bold_font: ./fonts/Roboto-Bold.ttf
+  alternative_bold_font: ./semi-utils/fonts/Roboto-Medium.ttf
+  alternative_font: ./semi-utilsfonts/Roboto-Regular.ttf
+  bold_font: ./semi-utilsfonts/Roboto-Bold.ttf
   bold_font_size: 0.8
-  font: ./fonts/Kathy Fillia.otf
+  font: ./semi-utilsfonts/Kathy Fillia.otf
   font_size: 0.8
-  input_dir: ./input
-  output_dir: ./output
+  input_dir: C:\Users\Li Hang\Desktop\Photography\Marker\input
+  output_dir: C:\Users\Li Hang\Desktop\Photography\Marker\output
   quality: 100
 global:
   focal_length:
@@ -50,37 +50,37 @@ logo:
   makes:
     apple:
       id: APPLE
-      path: ./logos/apple.png
+      path: ./semi-utils/logos/apple.png
     canon:
       id: Canon
-      path: ./logos/canon.png
+      path: ./semi-utils/logos/canon.png
     fujifilm:
       id: FUJIFILM
-      path: ./logos/fujifilm.png
+      path: ./semi-utils/logos/fujifilm.png
     hasselblad:
       id: HASSELBLAD
-      path: ./logos/hasselblad.png
+      path: ./semi-utils/logos/hasselblad.png
     huawei:
       id: HUAWEI
-      path: ./logos/xmage.jpg
+      path: ./semi-utils/logos/xmage.jpg
     leica:
       id: leica
-      path: ./logos/leica_logo.png
+      path: ./semi-utils/logos/leica_logo.png
     nikon:
       id: NIKON
-      path: ./logos/nikon.png
+      path: ./semi-utils/logos/nikon.png
     olympus:
       id: Olympus
-      path: ./logos/olympus_blue_gold.png
+      path: ./semi-utils/logos/olympus_blue_gold.png
     panasonic:
       id: Panasonic
-      path: ./logos/panasonic.png
+      path: ./semi-utils/logos/panasonic.png
     pentax:
       id: PENTAX
-      path: ./logos/pentax.png
+      path: ./semi-utils/logos/pentax.png
     ricoh:
       id: RICOH
-      path: ./logos/ricoh.png
+      path: ./semi-utils/logos/ricoh.png
     sony:
       id: SONY
-      path: ./logos/sony.png
+      path: ./semi-utils/logos/sony.png

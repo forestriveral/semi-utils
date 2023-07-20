@@ -94,6 +94,7 @@ class LayoutItem(object):
 
 # 读取配置
 config = Config('config.yaml')
+# config = Config('../quick_config.yaml')
 
 EMPTY_PROCESSOR = EmptyProcessor(config)
 WATERMARK_PROCESSOR = WatermarkProcessor(config)

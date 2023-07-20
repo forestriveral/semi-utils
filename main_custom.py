@@ -26,7 +26,7 @@ def processing():
     """
     # global state
 
-    file_list = get_file_list(config.get_input_dir())[:2]
+    file_list = get_file_list(config.get_input_dir())
     print('当前共有 {} 张图片待处理'.format(len(file_list)))
 
     processor_chain = ProcessorChain()

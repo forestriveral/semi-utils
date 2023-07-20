@@ -91,15 +91,19 @@ class Config(object):
         return self._data['base']['quality']
 
     def get_alternative_font(self):
+        assert os.path.exists(self._data['base']['alternative_font']), 'Alternative font not found!'
         return ImageFont.truetype(self._data['base']['alternative_font'], self.get_font_size())
 
     def get_alternative_bold_font(self):
+        assert os.path.exists(self._data['base']['alternative_bold_font']), 'Alternative bold font not found!'
         return ImageFont.truetype(self._data['base']['alternative_bold_font'], self.get_bold_font_size())
 
     def get_font(self):
+        assert os.path.exists(self._data['base']['font']), 'Font not found!'
         return ImageFont.truetype(self._data['base']['font'], self.get_font_size())
 
     def get_bold_font(self):
+        assert os.path.exists(self._data['base']['bold_font']), 'Bold font not found!'
         return ImageFont.truetype(self._data['base']['bold_font'], self.get_bold_font_size())
 
     def get_font_size(self):
