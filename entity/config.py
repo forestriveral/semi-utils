@@ -59,6 +59,21 @@ class Config(object):
             if 'background_color' in self._data['layout'] \
             else '#ffffff'
 
+    def get(self, key):
+        if key in self._data:
+            return self._data[key]
+        else:
+            return None
+
+    def get_or_default(self, key, default):
+        if key in self._data:
+            return self._data[key]
+        else:
+            return default
+
+    def set(self, key, value):
+        self._data[key] = value
+
     def load_logo(self, make) -> Image.Image:
         """
         根据厂商获取 logo
@@ -70,12 +85,18 @@ class Config(object):
             return self._logos[make]
         # 未读取到内存中的 logo
         for m in self._makes.values():
+            if m['id'] == '':
+                pass
             if m['id'].lower() in make.lower():
                 logo = Image.open(m['path'])
                 self._logos[make] = logo
                 return logo
+        logo_path = self._data['logo']['default']['path']
+        logo = Image.open(logo_path)
+        self._logos[make] = logo
+        return logo
 
-    def get(self) -> dict:
+    def get_data(self) -> dict:
         return self._data
 
     def get_input_dir(self):
@@ -242,6 +263,10 @@ class Config(object):
             self.set_custom(location)
         else:
             self._data['layout']['elements'][location]['name'] = name
+
+    def set_default_logo_path(self, logo_path):
+        self._data["logo"]['default']['path'] = logo_path
+        self.save()
 
     def has_lens_check(self):
         return self._data['layout']['lens_check']

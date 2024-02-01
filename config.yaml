@@ -47,6 +47,9 @@ layout:
   logo_position: left
   type: custom_watermark
 logo:
+  default:
+    id: ''
+    path: ./logos/empty.png
   makes:
     apple:
       id: APPLE
@@ -54,6 +57,12 @@ logo:
     canon:
       id: Canon
       path: ./logos/canon.png
+    dji:
+      id: DJI
+      path: ./logos/DJI.jpg
+    empty:
+      id: "\u7A7A"
+      path: ./logos/empty.png
     fujifilm:
       id: FUJIFILM
       path: ./logos/fujifilm.png
@@ -62,7 +71,7 @@ logo:
       path: ./logos/hasselblad.png
     huawei:
       id: HUAWEI
-      path: ./logos/xmage.jpg
+      path: ./logos/xmage.png
     leica:
       id: leica
       path: ./logos/leica_logo.png
