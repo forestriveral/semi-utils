@@ -2,11 +2,11 @@ base:
   alternative_bold_font: ./fonts/Roboto-Medium.ttf
   alternative_font: ./fonts/Roboto-Regular.ttf
   bold_font: ./fonts/Roboto-Bold.ttf
-  bold_font_size: 0.8
+  bold_font_size: 0.7
   font: ./fonts/Kathy Fillia.otf
-  font_size: 0.8
-  input_dir: ./input
-  output_dir: ./output
+  font_size: 0.7
+  input_dir: ../input
+  output_dir: ../output
   quality: 100
 global:
   focal_length:
